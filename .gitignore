@@ -1,0 +1,30 @@
+# 환경변수 (절대 커밋 금지)
+.env
+.claude/settings.json
+
+# 생성된 결과물 (용량 큼)
+outputs/images/
+outputs/campaigns/
+
+# 정산팀 — 개인정보 및 금융 데이터 (절대 커밋 금지)
+teams/settlement/downloads/
+teams/settlement/outputs/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,15 @@
+anthropic>=0.40.0          # Claude API + Agent SDK
+openai>=1.50.0             # GPT Image (gpt-image-1)
+tavily-python>=0.3.0       # 웹 서치 (레퍼런스/소비자 리서치)
+slack-sdk>=3.27.0          # Slack 통합
+notion-client>=2.2.1       # Notion API
+pydantic>=2.9.0            # 에이전트 간 데이터 스키마 검증
+python-dotenv>=1.0.1       # .env 환경변수 로딩
+pillow>=10.4.0             # 이미지 처리
+requests>=2.32.0           # HTTP 요청 (Stability AI 폴백)
+
+# 정산팀 의존성
+pandas>=2.2.0              # 매출 엑셀 집계 (settlement-sales-aggregator)
+openpyxl>=3.1.0            # .xlsx 파일 읽기
+playwright>=1.44.0         # Cafe24 브라우저 자동화 (cafe24_downloader)
+fpdf2>=2.7.0               # 한국어 PDF 정산서 생성 (settlement_pdf.py)

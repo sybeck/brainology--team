@@ -1,0 +1,166 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 920" width="900" height="920" font-family="'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif">
+
+  <!-- Background -->
+  <rect width="900" height="920" fill="#F8FAFB" rx="0"/>
+
+  <!-- Title -->
+  <rect x="0" y="0" width="900" height="64" fill="#1A1A2E"/>
+  <text x="450" y="38" text-anchor="middle" font-size="20" font-weight="bold" fill="white">브레인올로지 메타 광고 콘텐츠 제작 파이프라인</text>
+  <text x="450" y="56" text-anchor="middle" font-size="12" fill="#A0AEC0">제품 1개 기준 · 이미지 광고 5개 + 영상 스크립트 10개</text>
+
+  <!-- ── INPUT ── -->
+  <rect x="280" y="84" width="340" height="52" rx="10" fill="#EBF8FF" stroke="#3182CE" stroke-width="1.5"/>
+  <text x="450" y="107" text-anchor="middle" font-size="13" font-weight="bold" fill="#2B6CB0">INPUT</text>
+  <text x="450" y="125" text-anchor="middle" font-size="11" fill="#4A5568">products/{제품명}.md  ·  brand/brand_guide.md</text>
+
+  <!-- Arrow down -->
+  <line x1="450" y1="136" x2="450" y2="158" stroke="#718096" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- ── PHASE 1 label ── -->
+  <text x="65" y="194" text-anchor="middle" font-size="11" font-weight="bold" fill="#718096">PHASE 1</text>
+  <text x="65" y="208" text-anchor="middle" font-size="10" fill="#718096">병렬 리서치</text>
+
+  <!-- Phase 1 container -->
+  <rect x="110" y="160" width="680" height="80" rx="10" fill="#FFFBEB" stroke="#D69E2E" stroke-width="1.5" stroke-dasharray="6,3"/>
+
+  <!-- contents-reference -->
+  <rect x="130" y="174" width="295" height="52" rx="8" fill="white" stroke="#D69E2E" stroke-width="1.5"/>
+  <text x="277" y="196" text-anchor="middle" font-size="12" font-weight="bold" fill="#744210">🔍 contents-reference</text>
+  <text x="277" y="213" text-anchor="middle" font-size="10" fill="#92400E">Meta Ad · 경쟁사 광고 · 트렌드 수집 (7일 캐시)</text>
+
+  <!-- contents-researcher -->
+  <rect x="475" y="174" width="295" height="52" rx="8" fill="white" stroke="#D69E2E" stroke-width="1.5"/>
+  <text x="622" y="196" text-anchor="middle" font-size="12" font-weight="bold" fill="#744210">👩‍👧 contents-researcher</text>
+  <text x="622" y="213" text-anchor="middle" font-size="10" fill="#92400E">부모 커뮤니티 · 페인포인트 수집 (7일 캐시)</text>
+
+  <!-- Parallel label -->
+  <text x="450" y="173" text-anchor="middle" font-size="10" fill="#B7791F">동시 실행</text>
+
+  <!-- Arrow down -->
+  <line x1="450" y1="240" x2="450" y2="262" stroke="#718096" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- ── PHASE 2 label ── -->
+  <text x="65" y="296" text-anchor="middle" font-size="11" font-weight="bold" fill="#718096">PHASE 2</text>
+  <text x="65" y="310" text-anchor="middle" font-size="10" fill="#718096">기획</text>
+
+  <!-- contents-planner -->
+  <rect x="260" y="264" width="380" height="60" rx="8" fill="white" stroke="#6B46C1" stroke-width="2"/>
+  <text x="450" y="288" text-anchor="middle" font-size="13" font-weight="bold" fill="#553C9A">🧠 contents-planner</text>
+  <text x="450" y="306" text-anchor="middle" font-size="10" fill="#6B46C1">제품 + 레퍼런스 + 소비자 인사이트 종합</text>
+  <text x="450" y="318" text-anchor="middle" font-size="10" fill="#6B46C1">이미지 컨셉 5개 + 영상 컨셉 10개 기획</text>
+
+  <!-- Arrow down + branch lines -->
+  <line x1="450" y1="324" x2="450" y2="345" stroke="#718096" stroke-width="1.5"/>
+  <line x1="230" y1="345" x2="670" y2="345" stroke="#718096" stroke-width="1.5"/>
+  <line x1="230" y1="345" x2="230" y2="367" stroke="#718096" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="670" y1="345" x2="670" y2="367" stroke="#718096" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- ── PHASE 3 label ── -->
+  <text x="65" y="418" text-anchor="middle" font-size="11" font-weight="bold" fill="#718096">PHASE 3</text>
+  <text x="65" y="432" text-anchor="middle" font-size="10" fill="#718096">제작 (병렬)</text>
+
+  <!-- ─ IMAGE PATH ─ -->
+  <rect x="110" y="360" width="265" height="200" rx="10" fill="#F0FFF4" stroke="#38A169" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <text x="242" y="378" text-anchor="middle" font-size="11" font-weight="bold" fill="#276749">이미지 경로 (5개)</text>
+
+  <!-- contents-copywriter (image) -->
+  <rect x="125" y="383" width="235" height="52" rx="8" fill="white" stroke="#38A169" stroke-width="1.5"/>
+  <text x="242" y="405" text-anchor="middle" font-size="12" font-weight="bold" fill="#22543D">✍️ contents-copywriter</text>
+  <text x="242" y="422" text-anchor="middle" font-size="10" fill="#276749">이미지 5개 카피 · A/B 변형 작성</text>
+
+  <line x1="242" y1="435" x2="242" y2="455" stroke="#718096" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- contents-image -->
+  <rect x="125" y="458" width="235" height="52" rx="8" fill="white" stroke="#38A169" stroke-width="1.5"/>
+  <text x="242" y="480" text-anchor="middle" font-size="12" font-weight="bold" fill="#22543D">🖼️ contents-image</text>
+  <text x="242" y="497" text-anchor="middle" font-size="10" fill="#276749">이미지 생성 · 브랜드 가이드 자체 검수</text>
+
+  <!-- output badge image -->
+  <rect x="148" y="522" width="190" height="26" rx="6" fill="#C6F6D5" stroke="#38A169" stroke-width="1"/>
+  <text x="243" y="539" text-anchor="middle" font-size="10" font-weight="bold" fill="#22543D">산출물: 이미지 PNG 5장</text>
+
+  <!-- ─ VIDEO PATH ─ -->
+  <rect x="525" y="360" width="265" height="200" rx="10" fill="#EBF4FF" stroke="#4299E1" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <text x="657" y="378" text-anchor="middle" font-size="11" font-weight="bold" fill="#2B6CB0">영상 경로 (10개)</text>
+
+  <!-- contents-copywriter (video) -->
+  <rect x="540" y="383" width="235" height="52" rx="8" fill="white" stroke="#4299E1" stroke-width="1.5"/>
+  <text x="657" y="405" text-anchor="middle" font-size="12" font-weight="bold" fill="#2C5282">✍️ contents-copywriter</text>
+  <text x="657" y="422" text-anchor="middle" font-size="10" fill="#2B6CB0">영상 10개 카피 · VO 방향 작성</text>
+
+  <line x1="657" y1="435" x2="657" y2="455" stroke="#718096" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- contents-scripter -->
+  <rect x="540" y="458" width="235" height="52" rx="8" fill="white" stroke="#4299E1" stroke-width="1.5"/>
+  <text x="657" y="480" text-anchor="middle" font-size="12" font-weight="bold" fill="#2C5282">🎬 contents-scripter</text>
+  <text x="657" y="497" text-anchor="middle" font-size="10" fill="#2B6CB0">15s/30s Reel 스크립트 10개 작성</text>
+
+  <!-- output badge video -->
+  <rect x="563" y="522" width="190" height="26" rx="6" fill="#BEE3F8" stroke="#4299E1" stroke-width="1"/>
+  <text x="658" y="539" text-anchor="middle" font-size="10" font-weight="bold" fill="#2C5282">산출물: 스크립트 JSON 10개</text>
+
+  <!-- Merge lines -->
+  <line x1="242" y1="560" x2="242" y2="581" stroke="#718096" stroke-width="1.5"/>
+  <line x1="657" y1="560" x2="657" y2="581" stroke="#718096" stroke-width="1.5"/>
+  <line x1="242" y1="581" x2="657" y2="581" stroke="#718096" stroke-width="1.5"/>
+  <line x1="450" y1="581" x2="450" y2="603" stroke="#718096" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- ── PHASE 4 label ── -->
+  <text x="65" y="638" text-anchor="middle" font-size="11" font-weight="bold" fill="#718096">PHASE 4</text>
+  <text x="65" y="652" text-anchor="middle" font-size="10" fill="#718096">배포</text>
+
+  <!-- shared-distributor -->
+  <rect x="260" y="605" width="380" height="60" rx="8" fill="white" stroke="#805AD5" stroke-width="2"/>
+  <text x="450" y="629" text-anchor="middle" font-size="13" font-weight="bold" fill="#6B46C1">📦 shared-distributor</text>
+  <text x="450" y="647" text-anchor="middle" font-size="10" fill="#805AD5">AI 생성 콘텐츠 라벨 자동 부착 · 최종 패키지 조합</text>
+
+  <!-- distributor arrows -->
+  <line x1="350" y1="665" x2="280" y2="703" stroke="#718096" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="550" y1="665" x2="620" y2="703" stroke="#718096" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- ── OUTPUT ── -->
+  <!-- Slack -->
+  <rect x="110" y="705" width="295" height="60" rx="8" fill="white" stroke="#4A154B" stroke-width="1.5"/>
+  <text x="257" y="731" text-anchor="middle" font-size="13" font-weight="bold" fill="#4A154B">💬 Slack 전송</text>
+  <text x="257" y="749" text-anchor="middle" font-size="10" fill="#4A154B">이미지 5개 + 스크립트 요약 + Notion 링크</text>
+
+  <!-- Notion -->
+  <rect x="495" y="705" width="295" height="60" rx="8" fill="white" stroke="#1A1A2E" stroke-width="1.5"/>
+  <text x="642" y="731" text-anchor="middle" font-size="13" font-weight="bold" fill="#1A1A2E">📋 Notion 기록</text>
+  <text x="642" y="749" text-anchor="middle" font-size="10" fill="#1A1A2E">캠페인 페이지 생성 · 이미지 첨부 · 스크립트 저장</text>
+
+  <!-- ── LEGEND ── -->
+  <rect x="110" y="793" width="680" height="90" rx="8" fill="#F7FAFC" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="450" y="811" text-anchor="middle" font-size="11" font-weight="bold" fill="#4A5568">에이전트 범례</text>
+
+  <!-- legend items row 1 -->
+  <rect x="130" y="819" width="12" height="12" rx="2" fill="#FFFBEB" stroke="#D69E2E" stroke-width="1.5"/>
+  <text x="148" y="830" font-size="10" fill="#4A5568">리서치 에이전트</text>
+
+  <rect x="270" y="819" width="12" height="12" rx="2" fill="white" stroke="#6B46C1" stroke-width="1.5"/>
+  <text x="288" y="830" font-size="10" fill="#4A5568">기획 에이전트</text>
+
+  <rect x="400" y="819" width="12" height="12" rx="2" fill="white" stroke="#38A169" stroke-width="1.5"/>
+  <text x="418" y="830" font-size="10" fill="#4A5568">이미지 제작</text>
+
+  <rect x="510" y="819" width="12" height="12" rx="2" fill="white" stroke="#4299E1" stroke-width="1.5"/>
+  <text x="528" y="830" font-size="10" fill="#4A5568">영상 제작</text>
+
+  <rect x="610" y="819" width="12" height="12" rx="2" fill="white" stroke="#805AD5" stroke-width="1.5"/>
+  <text x="628" y="830" font-size="10" fill="#4A5568">배포</text>
+
+  <!-- legend row 2 -->
+  <line x1="130" y1="850" x2="155" y2="850" stroke="#D69E2E" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="162" y="854" font-size="10" fill="#718096">병렬 실행 컨테이너</text>
+
+  <rect x="130" y="861" width="12" height="8" rx="2" fill="#E9D8FD" stroke="#805AD5" stroke-width="1"/>
+  <text x="148" y="869" font-size="10" fill="#718096">컴플라이언스 검수는 /compliance-check 스킬로 별도 실행</text>
+
+  <!-- Arrow defs -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#718096"/>
+    </marker>
+  </defs>
+
+</svg>

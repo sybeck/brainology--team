@@ -1,0 +1,204 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1300 940" width="1300" height="940" font-family="'Apple SD Gothic Neo', 'Noto Sans KR', 'Segoe UI', sans-serif">
+
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#718096"/>
+    </marker>
+    <marker id="arrow-blue" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#3182CE"/>
+    </marker>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#00000018"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1300" height="940" fill="#F7F8FC"/>
+
+  <!-- Title Bar -->
+  <rect width="1300" height="56" fill="#1A1A2E"/>
+  <text x="650" y="32" text-anchor="middle" font-size="18" font-weight="bold" fill="white">브레인올로지 멀티팀 에이전트 구조</text>
+  <text x="650" y="48" text-anchor="middle" font-size="11" fill="#A0AEC0">Orchestrator + 5 Teams + 20 Sub-Agents</text>
+
+  <!-- ── ORCHESTRATOR ── -->
+  <rect x="475" y="74" width="350" height="54" rx="12" fill="#1A1A2E" filter="url(#shadow)"/>
+  <text x="650" y="98" text-anchor="middle" font-size="13" font-weight="bold" fill="white">🎯 오케스트레이터 (팀 리더)</text>
+  <text x="650" y="116" text-anchor="middle" font-size="10" fill="#A0AEC0">CLAUDE.md · 요청 분석 · 팀 라우팅</text>
+
+  <!-- Arrows from Orchestrator to 5 teams -->
+  <line x1="530" y1="128" x2="120" y2="216" stroke="#718096" stroke-width="1.5" marker-end="url(#arrow)" stroke-dasharray="5,3"/>
+  <line x1="560" y1="128" x2="345" y2="216" stroke="#718096" stroke-width="1.5" marker-end="url(#arrow)" stroke-dasharray="5,3"/>
+  <line x1="650" y1="128" x2="605" y2="216" stroke="#718096" stroke-width="1.5" marker-end="url(#arrow)" stroke-dasharray="5,3"/>
+  <line x1="740" y1="128" x2="870" y2="216" stroke="#718096" stroke-width="1.5" marker-end="url(#arrow)" stroke-dasharray="5,3"/>
+  <line x1="770" y1="128" x2="1140" y2="216" stroke="#718096" stroke-width="1.5" marker-end="url(#arrow)" stroke-dasharray="5,3"/>
+
+  <!-- ═══════════ TEAM 1: 콘텐츠팀 ═══════════ -->
+  <rect x="20" y="216" width="220" height="44" rx="10" fill="#2B6CB0" filter="url(#shadow)"/>
+  <text x="130" y="236" text-anchor="middle" font-size="12" font-weight="bold" fill="white">📣 콘텐츠팀</text>
+  <text x="130" y="252" text-anchor="middle" font-size="10" fill="#BEE3F8">/run-contents</text>
+
+  <text x="130" y="274" text-anchor="middle" font-size="9" fill="#718096">── 병렬 ──</text>
+  <rect x="20" y="278" width="100" height="38" rx="8" fill="#EBF8FF" stroke="#3182CE" stroke-width="1.5"/>
+  <text x="70" y="295" text-anchor="middle" font-size="9" font-weight="bold" fill="#2B6CB0">contents-reference</text>
+  <text x="70" y="308" text-anchor="middle" font-size="8" fill="#4A5568">레퍼런스 수집</text>
+
+  <rect x="130" y="278" width="110" height="38" rx="8" fill="#EBF8FF" stroke="#3182CE" stroke-width="1.5"/>
+  <text x="185" y="295" text-anchor="middle" font-size="9" font-weight="bold" fill="#2B6CB0">contents-researcher</text>
+  <text x="185" y="308" text-anchor="middle" font-size="8" fill="#4A5568">소비자 인사이트</text>
+
+  <rect x="55" y="336" width="150" height="38" rx="8" fill="#EBF8FF" stroke="#3182CE" stroke-width="1.5"/>
+  <text x="130" y="353" text-anchor="middle" font-size="9" font-weight="bold" fill="#2B6CB0">contents-planner</text>
+  <text x="130" y="367" text-anchor="middle" font-size="8" fill="#4A5568">광고 컨셉 기획</text>
+
+  <text x="130" y="390" text-anchor="middle" font-size="9" fill="#718096">── 조건부 병렬 ──</text>
+  <rect x="20" y="394" width="100" height="38" rx="8" fill="#EBF8FF" stroke="#3182CE" stroke-width="1.5"/>
+  <text x="70" y="411" text-anchor="middle" font-size="9" font-weight="bold" fill="#2B6CB0">contents-copywriter</text>
+  <text x="70" y="424" text-anchor="middle" font-size="8" fill="#4A5568">카피 작성</text>
+
+  <rect x="130" y="394" width="110" height="38" rx="8" fill="#EBF8FF" stroke="#3182CE" stroke-width="1.5"/>
+  <text x="185" y="411" text-anchor="middle" font-size="9" font-weight="bold" fill="#2B6CB0">contents-scripter</text>
+  <text x="185" y="424" text-anchor="middle" font-size="8" fill="#4A5568">영상 스크립트</text>
+
+  <rect x="20" y="452" width="100" height="38" rx="8" fill="#EBF8FF" stroke="#3182CE" stroke-width="1.5"/>
+  <text x="70" y="469" text-anchor="middle" font-size="9" font-weight="bold" fill="#2B6CB0">contents-image</text>
+  <text x="70" y="482" text-anchor="middle" font-size="8" fill="#4A5568">이미지 생성</text>
+
+  <line x1="70" y1="316" x2="95" y2="336" stroke="#3182CE" stroke-width="1" marker-end="url(#arrow-blue)"/>
+  <line x1="185" y1="316" x2="160" y2="336" stroke="#3182CE" stroke-width="1" marker-end="url(#arrow-blue)"/>
+  <line x1="105" y1="374" x2="80" y2="394" stroke="#3182CE" stroke-width="1" marker-end="url(#arrow-blue)"/>
+  <line x1="155" y1="374" x2="175" y2="394" stroke="#3182CE" stroke-width="1" marker-end="url(#arrow-blue)"/>
+  <line x1="70" y1="432" x2="70" y2="452" stroke="#3182CE" stroke-width="1" marker-end="url(#arrow-blue)"/>
+
+  <!-- ═══════════ TEAM 2: 상품기획팀 ═══════════ -->
+  <rect x="260" y="216" width="200" height="44" rx="10" fill="#276749" filter="url(#shadow)"/>
+  <text x="360" y="236" text-anchor="middle" font-size="12" font-weight="bold" fill="white">📦 상품 기획팀</text>
+  <text x="360" y="252" text-anchor="middle" font-size="10" fill="#C6F6D5">/run-product-planning</text>
+
+  <rect x="275" y="278" width="170" height="38" rx="8" fill="#F0FFF4" stroke="#38A169" stroke-width="1.5"/>
+  <text x="360" y="295" text-anchor="middle" font-size="9" font-weight="bold" fill="#276749">product-market-researcher</text>
+  <text x="360" y="308" text-anchor="middle" font-size="8" fill="#4A5568">시장 리서치</text>
+
+  <rect x="275" y="336" width="170" height="38" rx="8" fill="#F0FFF4" stroke="#38A169" stroke-width="1.5"/>
+  <text x="360" y="353" text-anchor="middle" font-size="9" font-weight="bold" fill="#276749">product-ideator</text>
+  <text x="360" y="367" text-anchor="middle" font-size="8" fill="#4A5568">신제품 아이디어 발굴</text>
+
+  <rect x="275" y="394" width="170" height="38" rx="8" fill="#F0FFF4" stroke="#38A169" stroke-width="1.5"/>
+  <text x="360" y="411" text-anchor="middle" font-size="9" font-weight="bold" fill="#276749">product-brief-writer</text>
+  <text x="360" y="424" text-anchor="middle" font-size="8" fill="#4A5568">기획서 작성</text>
+
+  <line x1="360" y1="316" x2="360" y2="336" stroke="#38A169" stroke-width="1" marker-end="url(#arrow-blue)"/>
+  <line x1="360" y1="374" x2="360" y2="394" stroke="#38A169" stroke-width="1" marker-end="url(#arrow-blue)"/>
+
+  <!-- ═══════════ TEAM 3: 인플루언서팀 ═══════════ -->
+  <rect x="490" y="216" width="210" height="44" rx="10" fill="#744210" filter="url(#shadow)"/>
+  <text x="595" y="236" text-anchor="middle" font-size="12" font-weight="bold" fill="white">🌟 인플루언서팀</text>
+  <text x="595" y="252" text-anchor="middle" font-size="10" fill="#FEEBC8">/run-influencer</text>
+
+  <rect x="505" y="278" width="180" height="38" rx="8" fill="#FFFAF0" stroke="#DD6B20" stroke-width="1.5"/>
+  <text x="595" y="295" text-anchor="middle" font-size="9" font-weight="bold" fill="#744210">influencer-scout</text>
+  <text x="595" y="308" text-anchor="middle" font-size="8" fill="#4A5568">인플루언서 탐색·평가</text>
+
+  <rect x="505" y="336" width="180" height="38" rx="8" fill="#FFFAF0" stroke="#DD6B20" stroke-width="1.5"/>
+  <text x="595" y="353" text-anchor="middle" font-size="9" font-weight="bold" fill="#744210">influencer-brief-writer</text>
+  <text x="595" y="367" text-anchor="middle" font-size="8" fill="#4A5568">협업 브리프 작성</text>
+
+  <rect x="505" y="394" width="180" height="38" rx="8" fill="#FFFAF0" stroke="#DD6B20" stroke-width="1.5"/>
+  <text x="595" y="411" text-anchor="middle" font-size="9" font-weight="bold" fill="#744210">influencer-tracker</text>
+  <text x="595" y="424" text-anchor="middle" font-size="8" fill="#4A5568">캠페인 성과 추적</text>
+
+  <line x1="595" y1="316" x2="595" y2="336" stroke="#DD6B20" stroke-width="1" marker-end="url(#arrow-blue)"/>
+  <line x1="595" y1="374" x2="595" y2="394" stroke="#DD6B20" stroke-width="1" marker-end="url(#arrow-blue)"/>
+
+  <!-- ═══════════ TEAM 4: 디자인팀 ═══════════ -->
+  <rect x="730" y="216" width="200" height="44" rx="10" fill="#553C9A" filter="url(#shadow)"/>
+  <text x="830" y="236" text-anchor="middle" font-size="12" font-weight="bold" fill="white">🎨 디자인팀</text>
+  <text x="830" y="252" text-anchor="middle" font-size="10" fill="#E9D8FD">/run-design</text>
+
+  <rect x="740" y="278" width="180" height="38" rx="8" fill="#FAF5FF" stroke="#805AD5" stroke-width="1.5"/>
+  <text x="830" y="295" text-anchor="middle" font-size="9" font-weight="bold" fill="#553C9A">design-briefer</text>
+  <text x="830" y="308" text-anchor="middle" font-size="8" fill="#4A5568">디자인 브리프 작성</text>
+
+  <rect x="740" y="336" width="180" height="38" rx="8" fill="#FAF5FF" stroke="#805AD5" stroke-width="1.5"/>
+  <text x="830" y="353" text-anchor="middle" font-size="9" font-weight="bold" fill="#553C9A">design-image-creator</text>
+  <text x="830" y="367" text-anchor="middle" font-size="8" fill="#4A5568">AI 이미지·시안 생성</text>
+
+  <rect x="740" y="394" width="180" height="38" rx="8" fill="#FAF5FF" stroke="#805AD5" stroke-width="1.5"/>
+  <text x="830" y="411" text-anchor="middle" font-size="9" font-weight="bold" fill="#553C9A">design-reviewer</text>
+  <text x="830" y="424" text-anchor="middle" font-size="8" fill="#4A5568">브랜드 가이드 검수</text>
+
+  <line x1="830" y1="316" x2="830" y2="336" stroke="#805AD5" stroke-width="1" marker-end="url(#arrow-blue)"/>
+  <line x1="830" y1="374" x2="830" y2="394" stroke="#805AD5" stroke-width="1" marker-end="url(#arrow-blue)"/>
+
+  <!-- ═══════════ TEAM 5: 정산팀 (NEW) ═══════════ -->
+  <rect x="1000" y="216" width="260" height="44" rx="10" fill="#97266D" filter="url(#shadow)"/>
+  <text x="1130" y="236" text-anchor="middle" font-size="12" font-weight="bold" fill="white">💰 정산팀</text>
+  <text x="1130" y="252" text-anchor="middle" font-size="10" fill="#FED7E2">/run-settlement</text>
+  <!-- NEW badge -->
+  <rect x="1228" y="217" width="30" height="14" rx="4" fill="#F6AD55"/>
+  <text x="1243" y="228" text-anchor="middle" font-size="8" font-weight="bold" fill="white">NEW</text>
+
+  <rect x="1005" y="278" width="250" height="38" rx="8" fill="#FFF5F7" stroke="#D53F8C" stroke-width="1.5"/>
+  <text x="1130" y="295" text-anchor="middle" font-size="9" font-weight="bold" fill="#97266D">settlement-target-fetcher</text>
+  <text x="1130" y="308" text-anchor="middle" font-size="8" fill="#4A5568">Notion DB 활성 대상 조회</text>
+
+  <rect x="1005" y="336" width="250" height="38" rx="8" fill="#FFF5F7" stroke="#D53F8C" stroke-width="1.5"/>
+  <text x="1130" y="353" text-anchor="middle" font-size="9" font-weight="bold" fill="#97266D">settlement-sales-aggregator</text>
+  <text x="1130" y="367" text-anchor="middle" font-size="8" fill="#4A5568">Cafe24 다운로드 · 옵션별 집계</text>
+
+  <rect x="1005" y="394" width="250" height="38" rx="8" fill="#FFF5F7" stroke="#D53F8C" stroke-width="1.5"/>
+  <text x="1130" y="411" text-anchor="middle" font-size="9" font-weight="bold" fill="#97266D">settlement-report-writer</text>
+  <text x="1130" y="424" text-anchor="middle" font-size="8" fill="#4A5568">PDF 생성 · Notion 업로드 · Slack</text>
+
+  <line x1="1130" y1="316" x2="1130" y2="336" stroke="#D53F8C" stroke-width="1" marker-end="url(#arrow-blue)"/>
+  <line x1="1130" y1="374" x2="1130" y2="394" stroke="#D53F8C" stroke-width="1" marker-end="url(#arrow-blue)"/>
+
+  <!-- 정산팀 tools label -->
+  <rect x="1005" y="452" width="250" height="28" rx="6" fill="#FFF5F7" stroke="#D53F8C" stroke-width="1" stroke-dasharray="4,2"/>
+  <text x="1130" y="462" text-anchor="middle" font-size="8" fill="#97266D">tools/settlement/ (analyzer, cafe24_downloader)</text>
+  <text x="1130" y="474" text-anchor="middle" font-size="8" fill="#97266D">tools/settlement_pdf.py · tools/settlement_notion.py</text>
+  <line x1="1130" y1="432" x2="1130" y2="452" stroke="#D53F8C" stroke-width="1" stroke-dasharray="3,2"/>
+
+  <!-- ═══════════ SHARED AGENTS ═══════════ -->
+  <rect x="20" y="560" width="1240" height="44" rx="10" fill="#2D3748" filter="url(#shadow)"/>
+  <text x="640" y="578" text-anchor="middle" font-size="12" font-weight="bold" fill="white">🔗 공유 에이전트 (모든 팀 사용)</text>
+  <text x="640" y="596" text-anchor="middle" font-size="10" fill="#A0AEC0">shared-compliance  ·  shared-distributor</text>
+
+  <rect x="280" y="624" width="280" height="46" rx="8" fill="#EDF2F7" stroke="#718096" stroke-width="1.5"/>
+  <text x="420" y="643" text-anchor="middle" font-size="11" font-weight="bold" fill="#2D3748">shared-compliance</text>
+  <text x="420" y="659" text-anchor="middle" font-size="9" fill="#4A5568">광고 적합성 검수 · 건강기능식품법 · Meta 정책</text>
+
+  <rect x="700" y="624" width="280" height="46" rx="8" fill="#EDF2F7" stroke="#718096" stroke-width="1.5"/>
+  <text x="840" y="643" text-anchor="middle" font-size="11" font-weight="bold" fill="#2D3748">shared-distributor</text>
+  <text x="840" y="659" text-anchor="middle" font-size="9" fill="#4A5568">Slack 전송 · Notion 페이지 생성 · 최종 배포</text>
+
+  <!-- Arrows from teams to shared -->
+  <line x1="130" y1="498" x2="350" y2="560" stroke="#718096" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arrow)"/>
+  <line x1="360" y1="432" x2="460" y2="560" stroke="#718096" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arrow)"/>
+  <line x1="595" y1="432" x2="590" y2="560" stroke="#718096" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arrow)"/>
+  <line x1="830" y1="432" x2="760" y2="560" stroke="#718096" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arrow)"/>
+  <line x1="1130" y1="480" x2="900" y2="560" stroke="#718096" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arrow)"/>
+
+  <!-- ═══════════ SHARED ASSETS ═══════════ -->
+  <rect x="20" y="730" width="1240" height="50" rx="10" fill="#F0FFF4" stroke="#38A169" stroke-width="1.5"/>
+  <text x="640" y="751" text-anchor="middle" font-size="11" font-weight="bold" fill="#276749">📂 공통 자산 (모든 팀 참조)</text>
+  <text x="640" y="768" text-anchor="middle" font-size="10" fill="#4A5568">brand/ · products/ · schemas/ · tools/ · .env (API 키 · Cafe24 크레덴셜)</text>
+
+  <line x1="640" y1="670" x2="640" y2="730" stroke="#38A169" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arrow-blue)"/>
+
+  <!-- ═══════════ Legend ═══════════ -->
+  <rect x="20" y="800" width="1240" height="36" rx="8" fill="#EDF2F7"/>
+  <rect x="30" y="811" width="10" height="10" rx="2" fill="#3182CE"/>
+  <text x="46" y="820" font-size="9" fill="#4A5568">콘텐츠팀</text>
+  <rect x="100" y="811" width="10" height="10" rx="2" fill="#38A169"/>
+  <text x="116" y="820" font-size="9" fill="#4A5568">상품기획팀</text>
+  <rect x="178" y="811" width="10" height="10" rx="2" fill="#DD6B20"/>
+  <text x="194" y="820" font-size="9" fill="#4A5568">인플루언서팀</text>
+  <rect x="268" y="811" width="10" height="10" rx="2" fill="#805AD5"/>
+  <text x="284" y="820" font-size="9" fill="#4A5568">디자인팀</text>
+  <rect x="338" y="811" width="10" height="10" rx="2" fill="#D53F8C"/>
+  <text x="354" y="820" font-size="9" fill="#4A5568">정산팀 (NEW)</text>
+  <line x1="428" y1="816" x2="450" y2="816" stroke="#718096" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <text x="456" y="820" font-size="9" fill="#4A5568">라우팅/연결</text>
+  <text x="1100" y="820" font-size="9" fill="#718096">총 20개 서브에이전트 + 1개 오케스트레이터</text>
+
+</svg>

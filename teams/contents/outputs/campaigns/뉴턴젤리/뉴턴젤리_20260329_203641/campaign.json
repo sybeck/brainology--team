@@ -1,0 +1,74 @@
+{
+  "campaign_id": "뉴턴젤리_20260329_203641",
+  "product_name": "뉴턴젤리",
+  "output_type": "영상",
+  "created_at": "2026-03-29",
+  "video_scripts": [
+    {
+      "brief_id": "vid_1",
+      "title": "선생님 전화가 줄었어요",
+      "duration_sec": 30,
+      "outline_type": "A형",
+      "appearance_type": "사람등장형",
+      "narration": "여성VO_따뜻한",
+      "concept": "선생님 전화라는 공포 상황으로 즉각 공감. 산만함의 과학적 원인을 재정의하고 성분으로 해결책 제시. 변화된 아이 모습 + 환불 보장으로 리스크 제거",
+      "path": "outputs/campaigns/뉴턴젤리/뉴턴젤리_20260329_203641/video_1.json"
+    },
+    {
+      "brief_id": "vid_2",
+      "title": "오메가3만으로 충분하다고요?",
+      "duration_sec": 15,
+      "outline_type": "E형",
+      "appearance_type": "모션그래픽형",
+      "narration": "텍스트자막전용",
+      "concept": "기존 해결책(오메가3)의 한계를 역발상으로 질문. 오메가3 vs 기질 성분의 작용 영역 차이를 시각적으로 대비. 제품 제시 + 쿠폰 혜택 CTA",
+      "path": "outputs/campaigns/뉴턴젤리/뉴턴젤리_20260329_203641/video_2.json"
+    },
+    {
+      "brief_id": "vid_3",
+      "title": "처음엔 저도 안 믿었어요 - 엄마의 2주 일기",
+      "duration_sec": 60,
+      "outline_type": "F형",
+      "appearance_type": "사람등장형",
+      "narration": "여성VO_따뜻한",
+      "concept": "UGC 리얼 후기 스타일로 의심 → 기대 → 감동의 감정 곡선. 선생님의 긍정 피드백이 제3자 증거로 작동. 환불 보장 CTA",
+      "path": "outputs/campaigns/뉴턴젤리/뉴턴젤리_20260329_203641/video_3.json"
+    },
+    {
+      "brief_id": "vid_4",
+      "title": "아이 예민함, 기질이 아니라 세로토닌입니다",
+      "duration_sec": 15,
+      "outline_type": "H형",
+      "appearance_type": "혼합형",
+      "narration": "여성VO_전문적",
+      "concept": "예민함을 기질이 아닌 세로토닌 문제로 재정의. 세로토닌 메커니즘과 트립토판의 역할을 압축 전달. 정보 탐색형 CTA",
+      "path": "outputs/campaigns/뉴턴젤리/뉴턴젤리_20260329_203641/video_4.json"
+    },
+    {
+      "brief_id": "vid_5",
+      "title": "약 말고 젤리 - ADHD 회색지대 엄마를 위한 첫 선택",
+      "duration_sec": 30,
+      "outline_type": "B형",
+      "appearance_type": "사람등장형",
+      "narration": "아이목소리",
+      "concept": "아이 목소리로 부모 감정 직격. 약에 대한 불안 → 천연 성분 젤리 발견 → 아이의 긍정 반응. 감성적 CTA",
+      "path": "outputs/campaigns/뉴턴젤리/뉴턴젤리_20260329_203641/video_5.json"
+    }
+  ],
+  "status": "COMPLETED",
+  "overall_compliance_status": "PENDING_REVIEW",
+  "video_script_count": 5,
+  "slack_notified": true,
+  "slack_delivered_at": "2026-03-29T20:45:00+09:00",
+  "notion_url": "https://www.notion.so/b7e4c2a3d5f8g9h0i1j2k3l4m5n6o7p8",
+  "notion_page_title": "[뉴턴젤리] 광고 캠페인 — 2026-03-29",
+  "ai_disclosure": "AI로 제작된 콘텐츠",
+  "notion_page_url": "https://www.notion.so/2026-03-29-3327b6aa84298152ac18e67feaf24c7d",
+  "notion_page_urls": [
+    "https://www.notion.so/3327b6aa84298137adc5d3ca09b22562",
+    "https://www.notion.so/3-3327b6aa8429819195d5fd80b683d008",
+    "https://www.notion.so/2-3327b6aa84298189bdbde94745953914",
+    "https://www.notion.so/3327b6aa842981c09d1ef0d14c16ac38",
+    "https://www.notion.so/ADHD-3327b6aa842981d3ae9bdd49d4161965"
+  ]
+}
