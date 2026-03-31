@@ -1,0 +1,209 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="900" height="948" viewBox="0 0 900 948">
+
+  <rect width="900" height="948" fill="#FFFFFF"/>
+
+  <text x="450" y="56" font-family="'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif"
+        font-size="13" fill="#55577A" text-anchor="middle">브레인올로지</text>
+  <text x="450" y="98" font-family="'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif"
+        font-size="30" font-weight="bold" fill="#1A1A2E" text-anchor="middle">콘텐츠팀 파이프라인</text>
+  <line x1="200" y1="110" x2="700" y2="110" stroke="#D9601A" stroke-width="2"/>
+
+  <rect x="180" y="120" width="540" height="30" rx="7"
+        fill="#f9e7dc" stroke="#D0D5E8" stroke-width="1"/>
+  <text x="450" y="140" font-family="'Consolas','Courier New',monospace"
+        font-size="13" fill="#D9601A" text-anchor="middle">/run-contents  제품명=뉴턴젤리  타입=전체  이미지=5  영상=10</text>
+
+  <text x="450" y="178" font-family="'Consolas','Courier New',monospace"
+        font-size="11" fill="#55577A" text-anchor="middle">campaign_id = {제품명}_{YYYYMMDD_HHMMSS}</text>
+
+  <g>
+    <rect x="50" y="210" width="800" height="104" rx="10"
+          fill="#F8F9FC" stroke="#D9601A" stroke-width="1.2"/>
+    <rect x="50" y="210" width="8" height="104" rx="4" fill="#D9601A"/>
+    <rect x="54" y="210" width="4" height="104" fill="#D9601A"/>
+
+    <rect x="70" y="222" width="66" height="22" rx="5" fill="#D9601A"/>
+    <text x="103" y="237" font-family="'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif"
+          font-size="11" font-weight="bold" fill="#fff" text-anchor="middle">STEP 1</text>
+    <rect x="70" y="248" width="44" height="14" rx="3" fill="#D9601A" opacity="0.2"/><text x="92" y="258" font-family="'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif" font-size="8" fill="#D9601A" text-anchor="middle" font-weight="bold">병렬</text>
+
+    <text x="70" y="265" font-family="'Consolas','Courier New',monospace"
+          font-size="11" fill="#55577A">contents-reference  +  contents-researcher</text>
+
+    <text x="260" y="248" font-family="'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif"
+          font-size="19" font-weight="bold" fill="#1A1A2E">레퍼런스 · 소비자 리서치</text>
+    <text x="260" y="270" font-family="'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif"
+          font-size="12" fill="#55577A">경쟁사 광고 트렌드 · 부모 커뮤니티 페인포인트</text>
+    <text x="260" y="290" font-family="'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif" font-size="12" fill="#55577A">소비자 언어 수집</text>
+
+    <rect x="670" y="224" width="158" height="22" rx="5"
+          fill="#f9e7dc" stroke="#D9601A" stroke-width="0.9"/>
+    <text x="749" y="239" font-family="'Consolas','Courier New',monospace"
+          font-size="11" font-weight="bold" fill="#D9601A" text-anchor="middle">WebSearch</text>
+
+    <rect x="650" y="276" width="178" height="24" rx="5"
+          fill="#f9e7dc" stroke="#D9601A" stroke-width="0.8"/>
+    <text x="739" y="292" font-family="'Consolas','Courier New',monospace"
+          font-size="11" fill="#D9601A" text-anchor="middle">references.json + consumer_insights.json</text>
+  </g>
+  <line x1="450" y1="314" x2="450" y2="327" stroke="#D9601A" stroke-width="2"/>
+  <polygon points="444,325 456,325 450,333" fill="#D9601A"/>
+  <g>
+    <rect x="50" y="332" width="800" height="104" rx="10"
+          fill="#F8F9FC" stroke="#E88A3A" stroke-width="1.2"/>
+    <rect x="50" y="332" width="8" height="104" rx="4" fill="#E88A3A"/>
+    <rect x="54" y="332" width="4" height="104" fill="#E88A3A"/>
+
+    <rect x="70" y="344" width="66" height="22" rx="5" fill="#E88A3A"/>
+    <text x="103" y="359" font-family="'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif"
+          font-size="11" font-weight="bold" fill="#fff" text-anchor="middle">STEP 2</text>
+    
+
+    <text x="70" y="387" font-family="'Consolas','Courier New',monospace"
+          font-size="11" fill="#55577A">contents-planner</text>
+
+    <text x="260" y="370" font-family="'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif"
+          font-size="19" font-weight="bold" fill="#1A1A2E">콘텐츠 기획</text>
+    <text x="260" y="392" font-family="'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif"
+          font-size="12" fill="#55577A">이미지 컨셉 5개 + 영상 컨셉 10개</text>
+    <text x="260" y="412" font-family="'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif" font-size="12" fill="#55577A">브랜드 가이드 · 제품 파일 · 리서치 결과 종합</text>
+
+    <rect x="670" y="346" width="158" height="22" rx="5"
+          fill="#fbede1" stroke="#E88A3A" stroke-width="0.9"/>
+    <text x="749" y="361" font-family="'Consolas','Courier New',monospace"
+          font-size="11" font-weight="bold" fill="#E88A3A" text-anchor="middle">Read / Write</text>
+
+    <rect x="650" y="398" width="178" height="24" rx="5"
+          fill="#fbede1" stroke="#E88A3A" stroke-width="0.8"/>
+    <text x="739" y="414" font-family="'Consolas','Courier New',monospace"
+          font-size="11" fill="#E88A3A" text-anchor="middle">content_briefs.json</text>
+  </g>
+  <line x1="450" y1="436" x2="450" y2="449" stroke="#E88A3A" stroke-width="2"/>
+  <polygon points="444,447 456,447 450,455" fill="#E88A3A"/>
+  <g>
+    <rect x="50" y="454" width="800" height="104" rx="10"
+          fill="#F8F9FC" stroke="#E8A43A" stroke-width="1.2"/>
+    <rect x="50" y="454" width="8" height="104" rx="4" fill="#E8A43A"/>
+    <rect x="54" y="454" width="4" height="104" fill="#E8A43A"/>
+
+    <rect x="70" y="466" width="66" height="22" rx="5" fill="#E8A43A"/>
+    <text x="103" y="481" font-family="'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif"
+          font-size="11" font-weight="bold" fill="#fff" text-anchor="middle">STEP 3</text>
+    
+
+    <text x="70" y="509" font-family="'Consolas','Courier New',monospace"
+          font-size="11" fill="#55577A">contents-copywriter</text>
+
+    <text x="260" y="492" font-family="'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif"
+          font-size="19" font-weight="bold" fill="#1A1A2E">카피라이팅</text>
+    <text x="260" y="514" font-family="'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif"
+          font-size="12" fill="#55577A">헤드라인 · 바디카피 · CTA 작성</text>
+    <text x="260" y="534" font-family="'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif" font-size="12" fill="#55577A">이미지용 + 영상용 분리 작성</text>
+
+    <rect x="670" y="468" width="158" height="22" rx="5"
+          fill="#fbf1e1" stroke="#E8A43A" stroke-width="0.9"/>
+    <text x="749" y="483" font-family="'Consolas','Courier New',monospace"
+          font-size="11" font-weight="bold" fill="#E8A43A" text-anchor="middle">Read / Write</text>
+
+    <rect x="650" y="520" width="178" height="24" rx="5"
+          fill="#fbf1e1" stroke="#E8A43A" stroke-width="0.8"/>
+    <text x="739" y="536" font-family="'Consolas','Courier New',monospace"
+          font-size="11" fill="#E8A43A" text-anchor="middle">copy.json</text>
+  </g>
+  <line x1="450" y1="558" x2="450" y2="571" stroke="#E8A43A" stroke-width="2"/>
+  <polygon points="444,569 456,569 450,577" fill="#E8A43A"/>
+  <g>
+    <rect x="50" y="576" width="800" height="104" rx="10"
+          fill="#F8F9FC" stroke="#C95A0A" stroke-width="1.2"/>
+    <rect x="50" y="576" width="8" height="104" rx="4" fill="#C95A0A"/>
+    <rect x="54" y="576" width="4" height="104" fill="#C95A0A"/>
+
+    <rect x="70" y="588" width="66" height="22" rx="5" fill="#C95A0A"/>
+    <text x="103" y="603" font-family="'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif"
+          font-size="11" font-weight="bold" fill="#fff" text-anchor="middle">STEP 4</text>
+    <rect x="70" y="614" width="44" height="14" rx="3" fill="#C95A0A" opacity="0.2"/><text x="92" y="624" font-family="'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif" font-size="8" fill="#C95A0A" text-anchor="middle" font-weight="bold">분기</text>
+
+    <text x="70" y="631" font-family="'Consolas','Courier New',monospace"
+          font-size="11" fill="#55577A">contents-image  +  contents-scripter</text>
+
+    <text x="260" y="614" font-family="'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif"
+          font-size="19" font-weight="bold" fill="#1A1A2E">에셋 제작</text>
+    <text x="260" y="636" font-family="'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif"
+          font-size="12" fill="#55577A">이미지: AI 생성 → 이미지 파일 저장</text>
+    <text x="260" y="656" font-family="'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif" font-size="12" fill="#55577A">영상: Reel/스토리 스크립트 작성</text>
+
+    <rect x="670" y="590" width="158" height="22" rx="5"
+          fill="#f6e6da" stroke="#C95A0A" stroke-width="0.9"/>
+    <text x="749" y="605" font-family="'Consolas','Courier New',monospace"
+          font-size="11" font-weight="bold" fill="#C95A0A" text-anchor="middle">DALL·E / Write</text>
+
+    <rect x="650" y="642" width="178" height="24" rx="5"
+          fill="#f6e6da" stroke="#C95A0A" stroke-width="0.8"/>
+    <text x="739" y="658" font-family="'Consolas','Courier New',monospace"
+          font-size="11" fill="#C95A0A" text-anchor="middle">image_{N}.png + video_{N}.json</text>
+  </g>
+  <line x1="450" y1="680" x2="450" y2="693" stroke="#C95A0A" stroke-width="2"/>
+  <polygon points="444,691 456,691 450,699" fill="#C95A0A"/>
+  <g>
+    <rect x="50" y="698" width="800" height="104" rx="10"
+          fill="#F8F9FC" stroke="#8B3A0A" stroke-width="1.2"/>
+    <rect x="50" y="698" width="8" height="104" rx="4" fill="#8B3A0A"/>
+    <rect x="54" y="698" width="4" height="104" fill="#8B3A0A"/>
+
+    <rect x="70" y="710" width="66" height="22" rx="5" fill="#8B3A0A"/>
+    <text x="103" y="725" font-family="'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif"
+          font-size="11" font-weight="bold" fill="#fff" text-anchor="middle">STEP 5</text>
+    
+
+    <text x="70" y="753" font-family="'Consolas','Courier New',monospace"
+          font-size="11" fill="#55577A">shared-distributor</text>
+
+    <text x="260" y="736" font-family="'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif"
+          font-size="19" font-weight="bold" fill="#1A1A2E">배포</text>
+    <text x="260" y="758" font-family="'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif"
+          font-size="12" fill="#55577A">Slack 전송 · Notion 페이지 생성</text>
+    
+
+    <rect x="670" y="712" width="158" height="22" rx="5"
+          fill="#ede1da" stroke="#8B3A0A" stroke-width="0.9"/>
+    <text x="749" y="727" font-family="'Consolas','Courier New',monospace"
+          font-size="11" font-weight="bold" fill="#8B3A0A" text-anchor="middle">Slack / Notion API</text>
+
+    <rect x="650" y="764" width="178" height="24" rx="5"
+          fill="#ede1da" stroke="#8B3A0A" stroke-width="0.8"/>
+    <text x="739" y="780" font-family="'Consolas','Courier New',monospace"
+          font-size="11" fill="#8B3A0A" text-anchor="middle">Slack + Notion</text>
+  </g>
+  <line x1="450" y1="906" x2="450" y2="919" stroke="#D9601A" stroke-width="2"/>
+  <polygon points="444,917 456,917 450,925" fill="#D9601A"/>
+  <rect x="50" y="924" width="800" height="88" rx="10"
+        fill="#f9e7dc" stroke="#D9601A" stroke-width="1.5"/>
+  <text x="450" y="946" font-family="'Consolas','Courier New',monospace"
+        font-size="12" fill="#D9601A" text-anchor="middle">teams/contents/outputs/campaigns/{제품명}/{campaign_id}/</text>
+  <line x1="70" y1="956" x2="830" y2="956"
+        stroke="#D0D5E8" stroke-width="0.8"/>
+  <text x="70" y="982" font-family="'Consolas','Courier New',monospace"
+        font-size="10" fill="#D9601A">● references.json</text>
+  <text x="70" y="1000" font-family="'Consolas','Courier New',monospace"
+        font-size="9" fill="#55577A" opacity="0.7">Step 1</text>
+  <text x="222" y="982" font-family="'Consolas','Courier New',monospace"
+        font-size="10" fill="#E88A3A">● consumer_insights.json</text>
+  <text x="222" y="1000" font-family="'Consolas','Courier New',monospace"
+        font-size="9" fill="#55577A" opacity="0.7">Step 2</text>
+  <text x="374" y="982" font-family="'Consolas','Courier New',monospace"
+        font-size="10" fill="#E8A43A">● content_briefs.json</text>
+  <text x="374" y="1000" font-family="'Consolas','Courier New',monospace"
+        font-size="9" fill="#55577A" opacity="0.7">Step 3</text>
+  <text x="526" y="982" font-family="'Consolas','Courier New',monospace"
+        font-size="10" fill="#C95A0A">● copy.json</text>
+  <text x="526" y="1000" font-family="'Consolas','Courier New',monospace"
+        font-size="9" fill="#55577A" opacity="0.7">Step 4</text>
+  <text x="678" y="982" font-family="'Consolas','Courier New',monospace"
+        font-size="10" fill="#8B3A0A">● image_{N}.png</text>
+  <text x="678" y="1000" font-family="'Consolas','Courier New',monospace"
+        font-size="9" fill="#55577A" opacity="0.7">Step 5</text>
+
+  <text x="450" y="936" font-family="'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif"
+        font-size="11" fill="#9090AA" text-anchor="middle">브레인올로지 콘텐츠팀  ·  Claude Code 기반 멀티에이전트 파이프라인</text>
+</svg>

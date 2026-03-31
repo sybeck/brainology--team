@@ -24,7 +24,7 @@
 → `/run-contents` 스킬 실행
 
 ### 상품 기획팀 트리거 키워드
-"상품 기획", "신제품", "기획서", "제품 아이디어", "시장 조사", "경쟁사 분석"
+"상품 기획", "신제품", "기획서", "제품 아이디어", "시장 조사", "경쟁사 분석", "면역", "키성장", "피곤함", "성분 조사", "키워드 검색량", "소비자 리뷰"
 → `/run-product-planning` 스킬 실행
 
 ### 인플루언서팀 트리거 키워드
@@ -94,6 +94,54 @@ teams/settlement/downloads/     ← Cafe24 다운로드 엑셀 임시 저장
 - `teams/settlement/outputs/{run_id}/targets.json`
 - `teams/settlement/outputs/{run_id}/sales_{name}.json`
 - `teams/settlement/outputs/{run_id}/settlement_{name}.pdf`
+
+---
+
+## 상품 기획팀 파이프라인 (상세)
+
+### 인자 처리
+- `문제`: 조사할 건강 문제 키워드 (예: 면역, 키성장, 잦은피곤함). 없으면 AI가 트렌드 기반 판단
+- `타겟`: 타겟 연령·특성 (예: 초등, 영유아). 없으면 전 연령 조사
+
+### 처리 순서
+
+1. **[순차]** `product-market-researcher` — 문제 키워드 기반 정성 시장 조사
+   - 연령/성별 프로파일, 구체적 증상, 시즌성, 소비자 해결 행동, 소비자 언어 수집
+   - 결과: `teams/product-planning/outputs/{research_id}/market_research.json`
+
+2. **[순차]** `product-data-researcher` — 키워드 검색량 데이터 조사
+   - 문제/성분/해결 키워드 검색량 분석, 네이버 DataLab API (또는 WebSearch 폴백), 키워드 성격 확인
+   - 결과: `teams/product-planning/outputs/{research_id}/keyword_data.json`
+
+3. **[순차]** `product-explorer` — 경쟁 제품 탐색
+   - 상위 키워드 기준 제품 탐색, 제품별 가격·제형·성분·판매량 수집, 상위 5개 선정
+   - 결과: `teams/product-planning/outputs/{research_id}/product_exploration.json`
+
+4. **[순차]** `product-review-analyst` — 소비자 리뷰 분석
+   - 상위 5개 제품 리뷰 수집, 좋은 점/나쁜 점/미충족 니즈 추출
+   - 결과: `teams/product-planning/outputs/{research_id}/consumer_reviews.json`
+
+5. **[순차]** `product-ideator` — 신제품 아이디어 추천
+   - 1~4단계 종합, 컨셉·가칭·가격대·제형·용량·성분·차별화 포인트 포함
+   - 결과: `teams/product-planning/outputs/{research_id}/product_ideas.json`
+
+6. **[순차]** `product-brief-writer` — 상품 기획서 작성
+   - 결과: `teams/product-planning/outputs/{research_id}/product_brief.md`
+
+### 네이버 DataLab API (선택)
+- 환경변수 `NAVER_CLIENT_ID`, `NAVER_CLIENT_SECRET` 설정 시 정확한 검색량 데이터 수집 가능
+- 없으면 WebSearch 기반 추정치로 대체
+
+### 산출물 경로
+```
+teams/product-planning/outputs/{research_id}/
+├── market_research.json      (정성 시장 조사)
+├── keyword_data.json         (키워드 검색량)
+├── product_exploration.json  (경쟁 제품 탐색)
+├── consumer_reviews.json     (소비자 리뷰)
+├── product_ideas.json        (신제품 아이디어)
+└── product_brief.md          (상품 기획서)
+```
 
 ---
 
