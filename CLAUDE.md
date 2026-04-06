@@ -24,7 +24,7 @@
 → `/run-contents` 스킬 실행
 
 ### 상품 기획팀 트리거 키워드
-"상품 기획", "신제품", "기획서", "제품 아이디어", "시장 조사", "경쟁사 분석", "면역", "키성장", "피곤함", "성분 조사", "키워드 검색량", "소비자 리뷰"
+"상품 기획", "신제품", "기획서", "제품 아이디어", "시장 조사", "경쟁사 분석", "면역", "키성장", "피로", "성분 조사", "소비자 리뷰"
 → `/run-product-planning` 스킬 실행
 
 ### 인플루언서팀 트리거 키워드
@@ -105,42 +105,60 @@ teams/settlement/downloads/     ← Cafe24 다운로드 엑셀 임시 저장
 
 ### 처리 순서
 
-1. **[순차]** `product-market-researcher` — 문제 키워드 기반 정성 시장 조사
-   - 연령/성별 프로파일, 구체적 증상, 시즌성, 소비자 해결 행동, 소비자 언어 수집
-   - 결과: `teams/product-planning/outputs/{research_id}/market_research.json`
+#### [시장조사 — 5단계 순차]
 
-2. **[순차]** `product-data-researcher` — 키워드 검색량 데이터 조사
-   - 문제/성분/해결 키워드 검색량 분석, 네이버 DataLab API (또는 WebSearch 폴백), 키워드 성격 확인
-   - 결과: `teams/product-planning/outputs/{research_id}/keyword_data.json`
+각 에이전트는 독립적인 컨텍스트에서 실행 (컨텍스트 윈도우 초과 방지)
 
-3. **[순차]** `product-explorer` — 경쟁 제품 탐색
-   - 상위 키워드 기준 제품 탐색, 제품별 가격·제형·성분·판매량 수집, 상위 5개 선정
-   - 결과: `teams/product-planning/outputs/{research_id}/product_exploration.json`
+1. **[순차]** `product-market-target` — 타겟군 조사
+   - 문제 키워드에 해당하는 연령·성별·라이프스타일 타겟 세분화
+   - 결과: `market/01_target_groups.json`
 
-4. **[순차]** `product-review-analyst` — 소비자 리뷰 분석
-   - 상위 5개 제품 리뷰 수집, 좋은 점/나쁜 점/미충족 니즈 추출
-   - 결과: `teams/product-planning/outputs/{research_id}/consumer_reviews.json`
+2. **[순차]** `product-market-problem` — 타겟별 문제 조사
+   - 타겟별 구체적 증상·발현 상황·심각도
+   - 결과: `market/02_target_problems.json`
 
-5. **[순차]** `product-ideator` — 신제품 아이디어 추천
-   - 1~4단계 종합, 컨셉·가칭·가격대·제형·용량·성분·차별화 포인트 포함
-   - 결과: `teams/product-planning/outputs/{research_id}/product_ideas.json`
+3. **[순차]** `product-market-mechanism` — 문제 정의·메커니즘 조사
+   - 의학적·생리적 원인, 악화 요인, 소비자 친화적 설명, 전문가 의견, 시즌성
+   - 결과: `market/03_problem_mechanism.json`
 
-6. **[순차]** `product-brief-writer` — 상품 기획서 작성
-   - 결과: `teams/product-planning/outputs/{research_id}/product_brief.md`
+4. **[순차]** `product-market-consumer-voice` — 소비자 실제 고민 조사
+   - 맘카페·커뮤니티에서 날것의 소비자 표현 수집, 경쟁제품 탐색용 검색 키워드 포함
+   - 결과: `market/04_consumer_voice.json`
 
-### 네이버 DataLab API (선택)
-- 환경변수 `NAVER_CLIENT_ID`, `NAVER_CLIENT_SECRET` 설정 시 정확한 검색량 데이터 수집 가능
-- 없으면 WebSearch 기반 추정치로 대체
+5. **[순차]** `product-market-alternatives` — 소비자 해결 방법 통합 조사
+   - 비영양제 대안(식단·병원·생활습관) + 영양제 성분(기전·근거·권장량·성분 스택)
+   - 결과: `market/05_solutions.json`
+
+#### [후속 파이프라인]
+
+6. **[순차]** `product-explorer` — 경쟁 제품 탐색
+   - `04_consumer_voice.json`의 검색 키워드 + `05_solutions.json`의 성분 스택 기준 탐색
+   - 결과: `product_exploration.json`
+
+7. **[순차]** `product-review-analyst` — 소비자 리뷰 분석
+    - 상위 5개 제품 리뷰, 좋은 점/나쁜 점/미충족 니즈
+    - 결과: `consumer_reviews.json`
+
+8. **[순차]** `product-ideator` — 신제품 아이디어 도출
+    - 시장조사 전 단계 종합, 아이디어 3개 + 최우선 추천 1개
+    - 결과: `product_ideas.json`
+
+9. **[순차]** `product-brief-writer` — 상품 기획서 작성
+    - 결과: `product_brief.md`
 
 ### 산출물 경로
 ```
 teams/product-planning/outputs/{research_id}/
-├── market_research.json      (정성 시장 조사)
-├── keyword_data.json         (키워드 검색량)
-├── product_exploration.json  (경쟁 제품 탐색)
-├── consumer_reviews.json     (소비자 리뷰)
-├── product_ideas.json        (신제품 아이디어)
-└── product_brief.md          (상품 기획서)
+├── market/
+│   ├── 01_target_groups.json      (타겟군 조사)
+│   ├── 02_target_problems.json    (타겟별 문제 조사)
+│   ├── 03_problem_mechanism.json  (문제 정의·메커니즘·전문가 의견·시즌성)
+│   ├── 04_consumer_voice.json     (소비자 실제 고민)
+│   └── 05_solutions.json          (해결 방법: 비영양제 대안 + 영양제 성분)
+├── product_exploration.json       (경쟁 제품 탐색)
+├── consumer_reviews.json          (소비자 리뷰)
+├── product_ideas.json             (신제품 아이디어)
+└── product_brief.md               (상품 기획서)
 ```
 
 ---
