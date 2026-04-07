@@ -56,6 +56,12 @@ def _h3(text: str) -> dict:
         "heading_3": {"rich_text": [{"text": {"content": text}}]},
     }
 
+def _bullet(text: str) -> dict:
+    return {
+        "object": "block", "type": "bulleted_list_item",
+        "bulleted_list_item": {"rich_text": [{"text": {"content": text[:2000]}}]},
+    }
+
 def _quote(text: str) -> dict:
     return {
         "object": "block", "type": "quote",
@@ -77,61 +83,90 @@ def _callout(text: str, emoji: str = "📝") -> dict:
 
 # ── 영상 스크립트 본문 블록 ───────────────────────────────
 
+def _extract_subtitle_text(scene: dict) -> str:
+    """씬에서 자막 텍스트를 추출. subtitle.text 또는 vo_or_caption 필드 모두 지원."""
+    subtitle = scene.get("subtitle")
+    if isinstance(subtitle, dict):
+        return subtitle.get("text", "")
+    if isinstance(subtitle, str):
+        return subtitle
+    return scene.get("vo_or_caption", "") or scene.get("caption", "")
+
+
+def _calc_timecodes(scenes: list) -> list[str]:
+    """각 씬의 duration_sec으로 누적 타임코드 [MM:SS-MM:SS] 계산."""
+    result = []
+    cursor = 0
+    for scene in scenes:
+        dur = scene.get("duration_sec") or 0
+        start = cursor
+        end = cursor + dur
+        def fmt(s):
+            return f"{s//60:02d}:{s%60:02d}"
+        result.append(f"[{fmt(start)}-{fmt(end)}]")
+        cursor = end
+    return result
+
+
 def build_video_blocks(vid: dict) -> list[dict]:
     blocks = []
-
-    # 기본 정보
-    blocks.append(_h2("기본 정보"))
-    info = "\n".join(filter(None, [
-        f"outline_type: {vid.get('outline_type', '')}",
-        f"appearance_type: {vid.get('appearance_type', '')}",
-        f"narration: {vid.get('narration', '')}",
-        f"format: {vid.get('format', '')}",
-    ]))
-    blocks.append(_para(info))
-    blocks.append(_divider())
-
-    # 후킹 문구
-    hook = vid.get("hook", "")
-    if hook:
-        blocks.append(_h2("후킹 문구"))
-        blocks.append(_callout(hook, "🎣"))
-        blocks.append(_divider())
-
-    # VO 전문
-    vo = vid.get("vo_full_transcript", "")
-    if vo:
-        blocks.append(_h2("VO 전문"))
-        blocks.append(_quote(vo))
-        blocks.append(_divider())
-
-    # 씬별 스크립트
     scenes = vid.get("scenes", [])
-    if scenes:
-        blocks.append(_h2("씬별 스크립트"))
-        for scene in scenes:
-            label = scene.get("label", "")
-            time_range = scene.get("time_range", "")
-            blocks.append(_h3(f"씬 {scene.get('scene_no', '')}  [{label}]  {time_range}"))
-            if scene.get("visual"):
-                blocks.append(_para(f"📷 비주얼\n{scene['visual']}"))
-            if scene.get("vo_or_caption"):
-                blocks.append(_para(f"🎙 VO / 자막\n{scene['vo_or_caption']}"))
-            if scene.get("direction"):
-                blocks.append(_para(f"🎬 연출\n{scene['direction']}"))
-            if scene.get("bgm_direction"):
-                blocks.append(_para(f"🎵 BGM\n{scene['bgm_direction']}"))
-        blocks.append(_divider())
 
-    # 전체 톤
-    if vid.get("overall_tone"):
-        blocks.append(_h2("전체 톤"))
-        blocks.append(_para(vid["overall_tone"]))
-
-    # 프로덕션 노트
+    # ── 1. 프로덕션 노트 (최상단) ─────────────────────────
     if vid.get("production_notes"):
         blocks.append(_h2("프로덕션 노트"))
         blocks.append(_para(vid["production_notes"]))
+        blocks.append(_divider())
+
+    # ── 2. 나레이션 타임라인 ──────────────────────────────
+    timecodes = _calc_timecodes(scenes)
+    blocks.append(_h2("나레이션 타임라인"))
+    for i, scene in enumerate(scenes):
+        tc = scene.get("timecode") or scene.get("time_range") or timecodes[i]
+        audio = scene.get("audio", {})
+        vo = audio.get("vo", "") if isinstance(audio, dict) else ""
+        if not vo:
+            vo = scene.get("vo_text", "") or scene.get("narration", "") or ""
+        if vo and "(없음)" not in vo and vo != "null":
+            blocks.append(_bullet(f"{tc}  {vo}"))
+    blocks.append(_divider())
+
+    # ── 3. 고정자막 / 4. 흘러가는자막 ────────────────────
+    fixed_list = []
+    flowing_list = []
+
+    for scene in scenes:
+        sub_text = _extract_subtitle_text(scene) or scene.get("on_screen_text", "")
+        if not sub_text:
+            continue
+        for line in (l.strip() for l in sub_text.split("\n") if l.strip()):
+            if "Brainology" in line or "브레인올로지" in line or "뉴턴젤리" in line:
+                fixed_list.append(line)
+            else:
+                flowing_list.append(line)
+
+    if fixed_list:
+        blocks.append(_h2("고정자막"))
+        for t in fixed_list:
+            blocks.append(_bullet(t))
+        blocks.append(_divider())
+
+    if flowing_list:
+        blocks.append(_h2("흘러가는자막"))
+        for t in flowing_list:
+            blocks.append(_bullet(t))
+        blocks.append(_divider())
+
+    # ── 5. 영상소스 ───────────────────────────────────────
+    blocks.append(_h2("영상소스"))
+    for i, scene in enumerate(scenes):
+        tc = scene.get("timecode") or scene.get("time_range") or timecodes[i]
+        visual = scene.get("visual") or scene.get("visual_description", "")
+        if visual:
+            blocks.append(_bullet(f"{tc}  {visual}"))
+            mg = scene.get("motion_graphics", "")
+            if mg and mg not in ("없음", ""):
+                blocks.append(_bullet(f"  └ 모션그래픽: {mg}"))
 
     return blocks
 
@@ -168,13 +203,53 @@ def build_image_blocks(img: dict) -> list[dict]:
 
 # ── 페이지 1개 생성 ───────────────────────────────────────
 
+def _get_global_max_num(notion, database_id: str) -> int:
+    """Notion DB 전체에서 YYMMDD_NNNN_ 패턴의 최대 번호를 반환."""
+    import re
+    max_num = 0
+    cursor = None
+    while True:
+        kwargs = {"filter": {"value": "page", "property": "object"}, "page_size": 100}
+        if cursor:
+            kwargs["start_cursor"] = cursor
+        res = notion.search(**kwargs)
+        for p in res.get("results", []):
+            if p.get("parent", {}).get("database_id", "").replace("-", "") != database_id.replace("-", ""):
+                continue
+            title_list = p["properties"].get("제목", {}).get("title", [])
+            if not title_list:
+                continue
+            title = title_list[0].get("text", {}).get("content", "")
+            m = re.search(r'_(\d{2,4})_', title)
+            if m:
+                max_num = max(max_num, int(m.group(1)))
+        if not res.get("has_more"):
+            break
+        cursor = res.get("next_cursor")
+    return max_num
+
+
+def _build_page_title(created_at: str, global_num: int, concept_title: str,
+                      product_name: str = "") -> str:
+    """NNNN_제품명_스크립트제목 형식 제목 생성. 예: 0021_뉴턴젤리_영양제전쟁드디어끝났어요"""
+    parts = [f"{global_num:04d}"]
+    if product_name:
+        parts.append(product_name)
+    if concept_title:
+        parts.append(concept_title)
+    return "_".join(parts)
+
+
 def create_page(notion, database_id: str, campaign_id: str, product_name: str,
-                created_at: str, content_type: str, item: dict) -> str | None:
+                created_at: str, content_type: str, item: dict,
+                global_num: int = 0) -> str | None:
     concept_title = item.get("concept_title") or item.get("brief_id", "")
     duration_sec = item.get("duration_sec")
 
+    page_title = _build_page_title(created_at, global_num, concept_title, product_name)
+
     properties = {
-        "제목": {"title": [{"text": {"content": concept_title}}]},
+        "제목": {"title": [{"text": {"content": page_title}}]},
         "제품명": {"rich_text": [{"text": {"content": product_name}}]},
         "생성일": {"date": {"start": created_at[:10]}},
         "유형": {"select": {"name": content_type}},
@@ -182,6 +257,9 @@ def create_page(notion, database_id: str, campaign_id: str, product_name: str,
     }
     if duration_sec is not None:
         properties["영상길이(초)"] = {"number": int(duration_sec)}
+    video_type = item.get("video_type", "")
+    if video_type:
+        properties["영상유형"] = {"select": {"name": video_type}}
 
     blocks = build_video_blocks(item) if content_type == "영상" else build_image_blocks(item)
 
@@ -200,6 +278,8 @@ def main():
     parser.add_argument("--campaign_id", required=True)
     parser.add_argument("--product_name", required=True)
     parser.add_argument("--campaign_json", required=True)
+    parser.add_argument("--single_file", default=None,
+                        help="단건 배포 시 해당 JSON 파일 경로 지정. 지정하면 이 파일 1개만 배포.")
     args = parser.parse_args()
 
     from notion_client import Client
@@ -209,47 +289,78 @@ def main():
         print("[ERROR] NOTION_DATABASE_ID 환경변수가 없습니다.", file=sys.stderr)
         sys.exit(1)
 
-    campaign_data = load_json(args.campaign_json)
-    campaign_dir = Path(args.campaign_json).parent
-    created_at = campaign_data.get("created_at", "")
+    campaign_json_path = Path(args.campaign_json)
+    campaign_data = load_json(str(campaign_json_path))
 
-    # 영상 파일 수집
-    video_files = []
-    for i in range(1, 20):
-        data = load_json(str(campaign_dir / f"video_{i}.json"))
-        if not data:
-            data = load_json(str(campaign_dir / f"video_vid_{i}.json"))
-        if data:
-            video_files.append(data)
+    # campaign.json이 없으면 자동 생성
+    if not campaign_json_path.exists() or not campaign_data:
+        from datetime import date
+        campaign_data = {
+            "campaign_id": args.campaign_id,
+            "product_name": args.product_name,
+            "created_at": date.today().isoformat(),
+        }
+        campaign_json_path.parent.mkdir(parents=True, exist_ok=True)
+        with open(campaign_json_path, "w", encoding="utf-8") as f:
+            json.dump(campaign_data, f, ensure_ascii=False, indent=2)
+        print(f"[INFO] campaign.json 자동 생성: {campaign_json_path}")
 
-    # 이미지 파일 수집
-    image_files = []
-    for i in range(1, 10):
-        data = load_json(str(campaign_dir / f"image_{i}.json"))
-        if not data:
-            data = load_json(str(campaign_dir / f"image_img_{i}.json"))
-        if data:
-            image_files.append(data)
+    campaign_dir = campaign_json_path.parent
+    created_at = campaign_data.get("created_at", "") or __import__("datetime").date.today().isoformat()
+
+    # 단건 배포 모드
+    if args.single_file:
+        single_data = load_json(args.single_file)
+        if not single_data:
+            print(f"[ERROR] 파일을 읽을 수 없습니다: {args.single_file}", file=sys.stderr)
+            sys.exit(1)
+        content_type = "이미지" if "image" in Path(args.single_file).name else "영상"
+        video_files = [single_data] if content_type == "영상" else []
+        image_files = [single_data] if content_type == "이미지" else []
+    else:
+        # 전체 배포 모드: 캠페인 디렉토리 스캔
+        video_files = []
+        for i in range(1, 20):
+            data = load_json(str(campaign_dir / f"video_{i}.json"))
+            if not data:
+                data = load_json(str(campaign_dir / f"video_vid_{i}.json"))
+            if not data:
+                data = load_json(str(campaign_dir / f"script_vid_{i}.json"))
+            if data:
+                video_files.append(data)
+
+        image_files = []
+        for i in range(1, 10):
+            data = load_json(str(campaign_dir / f"image_{i}.json"))
+            if not data:
+                data = load_json(str(campaign_dir / f"image_img_{i}.json"))
+            if data:
+                image_files.append(data)
+
+    # 글로벌 순번: DB 전체 최대값 조회 후 이어서 부여
+    global_num = _get_global_max_num(notion, database_id)
 
     page_urls = []
 
     for item in video_files:
+        global_num += 1
         try:
             url = create_page(notion, database_id, args.campaign_id, args.product_name,
-                              created_at, "영상", item)
+                              created_at, "영상", item, global_num)
             if url:
                 page_urls.append(url)
-                print(f"[OK] 영상: {item.get('concept_title', item.get('brief_id', ''))}  →  {url}")
+                print(f"[OK] 영상 #{global_num:04d}: {item.get('concept_title', item.get('brief_id', ''))}  →  {url}")
         except Exception as e:
             print(f"[ERROR] 영상 페이지 실패 ({item.get('brief_id', '')}): {e}", file=sys.stderr)
 
     for item in image_files:
+        global_num += 1
         try:
             url = create_page(notion, database_id, args.campaign_id, args.product_name,
-                              created_at, "이미지", item)
+                              created_at, "이미지", item, global_num)
             if url:
                 page_urls.append(url)
-                print(f"[OK] 이미지: {item.get('concept_title', item.get('brief_id', ''))}  →  {url}")
+                print(f"[OK] 이미지 #{global_num:04d}: {item.get('concept_title', item.get('brief_id', ''))}  →  {url}")
         except Exception as e:
             print(f"[ERROR] 이미지 페이지 실패 ({item.get('brief_id', '')}): {e}", file=sys.stderr)
 
