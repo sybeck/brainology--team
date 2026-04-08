@@ -210,6 +210,7 @@ def analyze_excel(
         - work["__coupon_amount__"]
         - work["__refund_amount__"]
     )
+    work = work[work["__amount__"] > 0]
 
     if qty_col is not None:
         work["__qty__"] = work.apply(

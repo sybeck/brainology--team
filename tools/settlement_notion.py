@@ -204,7 +204,8 @@ def build_settlement_blocks(report: dict) -> list[dict]:
     period = f"{report.get('start_date', '')} ~ {report.get('end_date', '')}"
 
     blocks.append(_divider())
-    blocks.append(_h2(f"브레인올로지 정산서 — {period}"))
+    brand_name = report.get("brand", "브레인올로지")
+    blocks.append(_h2(f"{brand_name} 정산서 — {period}"))
 
     # ── 기본 정보 요약
     base_rate    = report.get("base_fee_rate", report.get("fee_rate", 0))

@@ -111,8 +111,13 @@ def click_excel_download_button(page):
     sleep_3(page)
 
 
-def request_excel_in_popup(page1):
-    page1.locator("#aManagesList").select_option("49")
+BRAND_EXCEL_OPTION = {"부담제로": "83"}
+DEFAULT_EXCEL_OPTION = "49"
+
+
+def request_excel_in_popup(page1, brand: str = ""):
+    option = BRAND_EXCEL_OPTION.get(brand, DEFAULT_EXCEL_OPTION)
+    page1.locator("#aManagesList").select_option(option)
 
     def on_dialog(dialog):
         dialog.accept()
@@ -189,11 +194,18 @@ def click_first_download_button(page1, save_dir: str) -> str:
     return file_path
 
 
+def _make_cache_filename(name: str, product_code: str, start_date: str, end_date: str) -> str:
+    """다운로드 캐시용 파일명 생성: {start}_{end}_{name}_{product_code}.csv"""
+    safe_name = name.replace(" ", "_").replace("/", "_")
+    return f"{start_date}_{end_date}_{safe_name}_{product_code}.csv"
+
+
 def download_cafe24_excel(
     brand: str,
     product_code: str,
     start_date: str,
     end_date: str,
+    name: str = "",
 ) -> Tuple[str, Dict[str, Any]]:
     cred = get_brand_credential(brand)
 
@@ -202,6 +214,21 @@ def download_cafe24_excel(
 
     save_dir = ensure_dir(get_download_dir())
     headless = get_headless()
+
+    meta = {
+        "brand": brand,
+        "admin_id": cred.admin_id,
+        "product_code": product_code,
+        "start_date": start_date,
+        "end_date": end_date,
+    }
+
+    # 캐시: 이미 다운로드된 파일이 있으면 재사용
+    if name:
+        cached = os.path.join(save_dir, _make_cache_filename(name, product_code, start_date, end_date))
+        if os.path.exists(cached):
+            print(f"[캐시] 기존 파일 재사용 → {cached}")
+            return cached, meta
 
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=headless, slow_mo=3000)
@@ -240,16 +267,14 @@ def download_cafe24_excel(
         page1.wait_for_load_state("domcontentloaded")
         sleep_3(page1)
 
-        request_excel_in_popup(page1)
+        request_excel_in_popup(page1, brand=brand)
         file_path = click_first_download_button(page1, save_dir)
 
-        meta = {
-            "brand": brand,
-            "admin_id": cred.admin_id,
-            "product_code": product_code,
-            "start_date": start_date,
-            "end_date": end_date,
-        }
+        # 파일명을 날짜+이름 형식으로 변경
+        if name:
+            new_path = os.path.join(save_dir, _make_cache_filename(name, product_code, start_date, end_date))
+            os.replace(file_path, new_path)
+            file_path = new_path
 
         context.close()
         browser.close()

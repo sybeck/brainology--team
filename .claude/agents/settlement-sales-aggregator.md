@@ -41,12 +41,13 @@ from tools.settlement.analyzer import analyze_excel
 
 target = {target 데이터}
 
-# Cafe24에서 다운로드
+# Cafe24에서 다운로드 (이미 다운로드된 파일이 있으면 재사용)
 excel_path, meta = download_cafe24_excel(
     brand=target["brand"],
     product_code=target["product_code"],
     start_date="{start_date}",
     end_date="{end_date}",
+    name=target["name"],
 )
 
 # 집계
@@ -55,18 +56,23 @@ result = analyze_excel(
     product_code=target["product_code"],
     start_date="{start_date}",
     end_date="{end_date}",
-    fee_rate=target["fee_rate"],
+    base_fee_rate=target["base_fee_rate"],
     entity_type=target["entity_type"],
+    special_fee_rate=target.get("special_fee_rate"),
+    special_period_start=target.get("special_period_start"),
+    special_period_end=target.get("special_period_end"),
 )
 
 # 대상 정보 병합
 result["name"] = target["name"]
+result["product_name"] = target.get("product_name", "")
+result["brand"] = target.get("brand", "")
 result["notion_page_id"] = target["notion_page_id"]
 result["contact_person"] = target["contact_person"]
 result["contact_phone"] = target["contact_phone"]
 
 # 최종 정산금액 계산
-fee = result["fee_amount"]
+fee = result["total_fee_amount"]
 entity_type = result["entity_type"]
 if "3.3" in entity_type or "원천세" in entity_type:
     withheld = round(fee * 0.033)
@@ -105,20 +111,26 @@ for target in targets:
             product_code=target['product_code'],
             start_date='{start_date}',
             end_date='{end_date}',
+            name=target['name'],
         )
         result = analyze_excel(
             excel_path=excel_path,
             product_code=target['product_code'],
             start_date='{start_date}',
             end_date='{end_date}',
-            fee_rate=target['fee_rate'],
+            base_fee_rate=target['base_fee_rate'],
             entity_type=target['entity_type'],
+            special_fee_rate=target.get('special_fee_rate'),
+            special_period_start=target.get('special_period_start'),
+            special_period_end=target.get('special_period_end'),
         )
         result['name'] = target['name']
+        result['product_name'] = target.get('product_name', '')
+        result['brand'] = target.get('brand', '')
         result['notion_page_id'] = target['notion_page_id']
         result['contact_person'] = target['contact_person']
         result['contact_phone'] = target['contact_phone']
-        fee = result['fee_amount']
+        fee = result['total_fee_amount']
         if '3.3' in result['entity_type'] or '원천세' in result['entity_type']:
             withheld = round(fee * 0.033)
             result['withholding_tax_amount'] = withheld
